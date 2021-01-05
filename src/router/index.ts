@@ -16,6 +16,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'login',
     meta: { key: 2 },
     component: () => import('@/views/login.vue')
+  },
+  {
+    path: '/jingxuan',
+    name: 'jingxuan',
+    meta: { key: 1 },
+    component: () => import('@/views/jingxuan.vue')
   }
 ]
 
