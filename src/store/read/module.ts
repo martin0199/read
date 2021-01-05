@@ -21,6 +21,7 @@ interface Arag {
   fontSize: number;
   font: string;
   mod: string;
+  error: boolean;
 }
 
 export default {
@@ -45,7 +46,8 @@ export default {
     fontSize: 19, //字号
     font: '', //字体
     mod: '', // 1》亮 2》暗
-    process: ''
+    process: '',
+    error: false
   },
   mutations: {
     setRead (state: Arag, value: object) {
@@ -103,6 +105,9 @@ export default {
     setReadLy (state: Arag, value: boolean) {
       state.ly = value
     },
+    setReadError (state: Arag, value: boolean) {
+      state.error = value
+    },
     setReadInit (state: Arag) {
       state.mulu = false
       state.menu = false
@@ -133,7 +138,7 @@ export default {
   },
   actions: {
     actionRead (context: any, e: number) {
-      e !== 2 && context.commit('setGlobalLoading', true)
+      context.commit('setGlobalLoading', true)
       axios({
         params: {
           id: context.state.id,
@@ -148,28 +153,32 @@ export default {
         method: 'get',
         url: '/http/book/read.php'
       }).then((data) => {
-        //e-1 是正常加载  e==2是预加载 加载的数据赋值于lsdata   e==3 首次加载
-        if (e === 2) {
-          !data.data.content ? (
-            context.commit('setGlobalLoading', false),
-            context.commit('setError', 'lscontent is null')
-          ) : context.commit('setReadLsData', data.data)
-        } else {
-          //如果有内容则挂载 否则抛出错误
-          if (e === 3) {
-            context.commit('setReadMuluList', data.data.chapter)
-            context.commit('setReadCid', data.data.dqid)
-            context.commit('setReadOrder', data.data.order)
-            setStorage('mulu', data.data.chapter, 1000 * 60 * 24 * 360 * 10)
-          }
-          context.commit('setRead', data.data)
-          !data.data.content && context.commit('setError', 'content is null')
+        //e-1 是正常加载    e==3 首次加载
+        if (e === 3) {
+          context.commit('setReadMuluList', data.data.chapter)
+          context.commit('setReadCid', data.data.dqid)
+          context.commit('setReadOrder', data.data.order)
+          setStorage('mulu', data.data.chapter, 1000 * 60 * 24 * 360 * 10)
         }
-        context.commit('setGlobalLoading', false)
+        context.commit('setRead', data.data)
+        !data.data.content && context.commit('setReadError', 'content is null')
         context.commit('setReadBookCase', data.data.bookcase)
-      }).catch((e) => {
         context.commit('setGlobalLoading', false)
-        context.commit('setError', e)
+      }).catch(() => {
+        context.commit('setGlobalLoading', false)
+      })
+    },
+    actionLsRead (context: any, cid: number) {
+      axios({
+        params: {
+          id: context.state.id,
+          siteid: context.state.siteid,
+          cid: cid
+        },
+        method: 'get',
+        url: '/http/book/read.php'
+      }).then((data) => {
+        !data.data.content ? context.commit('setReadError', 'lscontent is null') : context.commit('setReadLsData', data.data)
       })
     },
     actionReadBookCase (context: any) {
@@ -214,6 +223,7 @@ export default {
     readBg: (state: Arag) => state.bg,
     readMulu: (state: Arag) => state.mulu,
     readMuluList: (state: Arag) => state.muluList,
-    readOrder: (state: Arag) => state.order
+    readOrder: (state: Arag) => state.order,
+    readError: (state: Arag) => state.error
   }
 }

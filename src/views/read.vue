@@ -11,7 +11,7 @@
       <read-mulu v-if="mulu"/>
       <read-ly v-if="menu"/>
     </div>
-    <read-error v-if="error" />
+    <read-error v-if="readError" />
     <read-load v-if="globalLoading" loadType="reading"/>
   </div>
 </template>
@@ -50,7 +50,7 @@ export default defineComponent({
     const route = useRoute()
     const store = useStore()
     const menu = computed(() => store.getters.readMenu)
-    const error = computed(() => store.getters.error)
+    const readError = computed(() => store.getters.readError)
     const globalLoading = computed(() => store.getters.globalLoading)
     const readMod = computed(() => store.getters.readMod)
     const mulu = computed(() => store.getters.readMulu)
@@ -66,7 +66,7 @@ export default defineComponent({
     return {
       menu,
       globalLoading,
-      error,
+      readError,
       readMod,
       mulu
     }

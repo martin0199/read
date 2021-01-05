@@ -1,4 +1,5 @@
 <template>
+{{appError}}
   <div class="appbox" :class="transitionName">
     <router-view v-slot="{ Component }" class="wrapper">
       <transition :name="transitionName">
@@ -6,14 +7,28 @@
       </transition>
     </router-view>
   </div>
+  <app-error v-if="appError" />
+
 </template>
 <script>
+import appError from '@/components/global/error.vue'
+import { defineComponent } from 'vue'
+
 document.addEventListener('DOMContentLoaded', () => {
   const html = document.querySelector('html')
   const fontSize = window.innerWidth / 10 > 50 ? 50 : window.innerWidth / 10
   html.style.fontSize = fontSize + 'px'
 })
-export default {
+
+export default defineComponent({
+  components: {
+    appError
+  },
+  computed: {
+    appError () {
+      return this.$store.getters.error
+    }
+  },
   data () {
     return {
       transitionName: ''
@@ -32,7 +47,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 <style scoped lang="scss">
 .appbox{

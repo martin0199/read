@@ -10,16 +10,31 @@ import read from './read/module'
 import type from './type/module'
 interface Arag {
   globalLoading: boolean;
+  error: string;
+  httpList: Array<string>;
 }
 export default createStore({
   state: {
-    globalLoading: false
+    globalLoading: false,
+    error: '',
+    httpList: []
   },
   mutations: {
-    setGlobalLoading: (state: Arag, value: boolean) => { state.globalLoading = value }
+    setGlobalLoading: (state: Arag, value: boolean) => { state.globalLoading = value },
+    setError: (state: Arag, value: string) => { state.error = value },
+    setHttpList: (state: Arag, value: any) => {
+      const rel = state.httpList.findIndex(e => e[1] === value[1])
+      rel === -1 ? state.httpList.push(value) : value[1]('error')
+    },
+    removeHttpList: (state: Arag, value: string) => {
+      const rel = state.httpList.findIndex(e => e[1] === value)
+      rel !== -1 && state.httpList.splice(rel, 1)
+    }
   },
   getters: {
-    globalLoading: (state: Arag) => state.globalLoading
+    globalLoading: (state: Arag) => state.globalLoading,
+    error: (state: Arag) => state.error,
+    httpList: (state: Arag) => state.httpList
   },
   modules: {
     bookcase,

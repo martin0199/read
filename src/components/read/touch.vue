@@ -91,20 +91,23 @@ export default defineComponent({
             arag.ls = false,
             store.commit('setReadCid', data.value.nextid),
             lsdata.value ? (
-              right()
+              right(),
+              watcher(),
+              store.commit('setGlobalLoading', false)
             ) : (
               store.commit('setGlobalLoading', true),
               store.commit('removeHttpList', '/http/book/read.php'),
               watcher = watch(lsdata, () => {
                 lsdata.value && (
                   right(),
+                  watcher(),
+                  store.commit('setGlobalLoading', false),
                   clearTimeout(settime),
                   move.value = 0
                 )
-                watcher()
               }),
               settime = setTimeout(() => {
-                lsdata.value ? clearTimeout(settime) : store.commit('setError', 'network is fail')
+                lsdata.value ? (clearTimeout(settime), watcher()) : (store.commit('setReadError', '10000 timeOut'), store.commit('setGlobalLoading', false))
               }, 10000)
             )
           ) : (
@@ -117,9 +120,7 @@ export default defineComponent({
         } else {
           (curPage.value === 2 && !arag.ls && data.value.nextid) && (
             arag.ls = true,
-            store.commit('setReadCid', data.value.nextid),
-            store.dispatch('actionRead', 2),
-            store.commit('setReadCid', data.value.dqid)
+            store.dispatch('actionLsRead', data.value.nextid)
           )
           curPage.value++
         }
