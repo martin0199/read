@@ -34,6 +34,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'ku',
     meta: { key: 1 },
     component: () => import('@/views/ku.vue')
+  },
+  {
+    path: '/wanben',
+    name: 'wanben',
+    meta: { key: 2 },
+    component: () => import('@/views/wanben.vue')
   }
 ]
 
