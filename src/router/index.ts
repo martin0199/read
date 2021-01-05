@@ -28,6 +28,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'guess',
     meta: { key: 2 },
     component: () => import('@/views/guess.vue')
+  },
+  {
+    path: '/ku',
+    name: 'ku',
+    meta: { key: 1 },
+    component: () => import('@/views/ku.vue')
   }
 ]
 
