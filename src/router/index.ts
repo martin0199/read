@@ -46,6 +46,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'search',
     meta: { key: 2 },
     component: () => import('@/views/search.vue')
+  },
+  {
+    path: '/detail/:id',
+    name: 'detail',
+    meta: { key: 3 },
+    component: () => import('@/views/detail.vue')
   }
 ]
 
