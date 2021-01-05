@@ -52,6 +52,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'detail',
     meta: { key: 3 },
     component: () => import('@/views/detail.vue')
+  },
+  {
+    path: '/read/:id/:cid/:siteid',
+    name: 'read',
+    meta: { key: 4 },
+    component: () => import('@/views/read.vue')
   }
 ]
 

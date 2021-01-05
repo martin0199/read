@@ -6,6 +6,7 @@ import ku from './ku/module'
 import wanben from './wanben/module'
 import search from './search/module'
 import detail from './detail/module'
+import read from './read/module'
 interface Arag {
   globalLoading: boolean;
 }
@@ -26,6 +27,7 @@ export default createStore({
     ku,
     wanben,
     search,
-    detail
+    detail,
+    read
   }
 })
