@@ -4,6 +4,7 @@ import jingxuan from './jingxuan/module'
 import guess from './guess/module'
 import ku from './ku/module'
 import wanben from './wanben/module'
+import search from './search/module'
 interface Arag {
   globalLoading: boolean;
 }
@@ -22,6 +23,7 @@ export default createStore({
     jingxuan,
     guess,
     ku,
-    wanben
+    wanben,
+    search
   }
 })

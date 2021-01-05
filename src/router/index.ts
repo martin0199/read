@@ -40,6 +40,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'wanben',
     meta: { key: 2 },
     component: () => import('@/views/wanben.vue')
+  },
+  {
+    path: '/search',
+    name: 'search',
+    meta: { key: 2 },
+    component: () => import('@/views/search.vue')
   }
 ]
 
