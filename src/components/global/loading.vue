@@ -22,6 +22,24 @@
       <img src="/book/images/indicator_verybig.gif">
     </div>
   </div>
+  <div id="zhanWei">
+    <div class="zhanWeiList" v-if="loadType=='list'">
+      <div class="r">
+        <ul v-for="(item, index) in arr" :key="index">
+          <li class="img"></li>
+          <li class="imgList">
+            <p class="once"></p>
+            <p class="two"></p>
+            <p></p>
+            <p></p>
+          </li>
+        </ul>
+      </div>
+      <div class="l">
+        <span v-for="(item, index) in arr" :key="index"></span>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -142,6 +160,58 @@ export default defineComponent({
   @include mod
   .loading{
     @include mod
+  }
+}
+.zhanWeiList{
+  padding: px(52) px(12) px(42) px(12);
+  .l{
+    width:px(64);
+    border-right: px(1) solid $greyf2;
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    span{
+      height: px(12);
+      background:$greyf8;
+      margin-bottom: px(10);
+      display: block;
+      width: 70%;
+      margin-left: 15%;
+    }
+  }
+  .r{
+    box-sizing: border-box;
+    padding-left: px(70);
+    position: absolute;
+    height:100%;
+    width: 100%;
+    ul{
+      overflow:hidden;
+      margin-bottom:px(8);
+      padding-bottom:px(13);
+      border-bottom: px(1) solid $greyf8;
+      .img{
+        float: left;
+        margin-right: px(10);
+        width: px(50);
+        height: px(62);
+        background: $img;
+      }
+      .imgList{
+        overflow: hidden;
+        p{
+          height: px(12);
+          background:$greyf8;
+          margin-bottom: px(10);
+        }
+        .once{
+          width: 60%;
+        }
+        .two{
+          width: 70%;
+        }
+      }
+    }
   }
 }
 </style>

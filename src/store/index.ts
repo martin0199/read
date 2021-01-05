@@ -7,6 +7,7 @@ import wanben from './wanben/module'
 import search from './search/module'
 import detail from './detail/module'
 import read from './read/module'
+import type from './type/module'
 interface Arag {
   globalLoading: boolean;
 }
@@ -28,6 +29,7 @@ export default createStore({
     wanben,
     search,
     detail,
-    read
+    read,
+    type
   }
 })
