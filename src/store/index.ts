@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import bookcase from './bookcase/module'
 import jingxuan from './jingxuan/module'
+import guess from './guess/module'
 interface Arag {
   globalLoading: boolean;
 }
@@ -16,6 +17,7 @@ export default createStore({
   },
   modules: {
     bookcase,
-    jingxuan
+    jingxuan,
+    guess
   }
 })

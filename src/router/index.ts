@@ -22,6 +22,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'jingxuan',
     meta: { key: 1 },
     component: () => import('@/views/jingxuan.vue')
+  },
+  {
+    path: '/guess',
+    name: 'guess',
+    meta: { key: 2 },
+    component: () => import('@/views/guess.vue')
   }
 ]
 

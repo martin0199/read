@@ -6,6 +6,22 @@
       <li class="three"></li>
     </ul>
   </div>
+  <div id="readLoad" v-if="loadType=='reading'">
+    <div class="box">
+      <h3></h3>
+      <p v-for="(list, index) in [1,2]" :key ="index" :class="index === 0 ? 'cur' : ''"></p>
+      <p v-for="(list, index) in [1,2]" :key ="index" :class="index === 0 ? 'cur' : ''"></p>
+      <p v-for="(list, index) in [1,2]" :key ="index" :class="index === 0 ? 'cur' : ''"></p>
+      <p v-for="(list, index) in [1,2]" :key ="index" :class="index === 0 ? 'cur' : ''"></p>
+      <div class="d">
+        <b></b>
+        <i></i>
+      </div>
+    </div>
+    <div class="loading">
+      <img src="/book/images/indicator_verybig.gif">
+    </div>
+  </div>
 </template>
 
 <script>
@@ -45,6 +61,87 @@ export default defineComponent({
     .two{
       -webkit-animation-delay:-0.16s;animation-delay:-0.16s
     }
+  }
+}
+#readLoad{
+ position: fixed;
+  width: 100%;
+  top:0;
+  height:100%;
+  left:0;
+  z-index: 11;
+  background: url(/book/read/skin-default-t.ece62.jpg) no-repeat top,url(/book/read/skin-default-b.79f06.jpg) no-repeat bottom,url(/book/read/skin-default-m.35905.jpg) repeat-y center 119px;
+  background-size: 100%;
+  .box{
+    padding:px(20);
+    h3{
+      background: $z;
+      width: 70%;
+      height:px(30);
+      margin-bottom: px(30);
+      margin-top:px(60);
+      opacity: 0.1;
+    }
+    p{
+      background: $z;
+      width: 100%;
+      height:px(20);
+      margin-bottom:px(20);
+      opacity: 0.1;
+      &.cur{
+        width: 90%;
+        margin-left: 10%;
+      }
+    }
+    .d{
+      overflow: hidden;
+      position: fixed;
+      top: px(10);
+      left:0;
+      width: 100%;
+      height: px(20);
+      b{
+        background: $z;
+        width: 30%;
+        height:px(20);
+        opacity: 0.1;
+        float: left;
+      }
+      i{
+        background: $z;
+        width: 30%;
+        height:px(20);
+        opacity: 0.1;
+        float: right;
+      }
+    }
+  }
+  .loading{
+    position: fixed;
+    width: px(60);
+    height: px(65);
+    line-height: px(65);
+    top:50%;
+    background: $greyf8;
+    border-radius: px(5);
+    text-align: center;
+    left:50%;
+    margin-left: px(-30);
+    margin-top: px(-30);
+    z-index: 999999;
+    font-size: px(22);
+    color:$grey6;
+    img{
+      margin-top: px(15);
+      width: px(30);
+      height: px(30);
+    }
+  }
+}
+.mod #readLoad{
+  @include mod
+  .loading{
+    @include mod
   }
 }
 </style>
