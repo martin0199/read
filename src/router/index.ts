@@ -10,6 +10,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'bookcase',
     meta: { key: 1 },
     component: () => import('@/views/bookcase.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    meta: { key: 2 },
+    component: () => import('@/views/login.vue')
   }
 ]
 

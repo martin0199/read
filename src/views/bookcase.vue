@@ -5,6 +5,7 @@
         <i class="iconfont icon-19 more" @click="handleBookCaseTab"></i>
       </template>
     </global-header>
+    <div id="headerSelect"></div>
     <global-load v-if="globalLoading" loadType="loading"/>
     <bookcase-header-tab v-if="bookcaseTab" />
     <bookcase-content :class="globalLoading?'Component':''" class="moveTop" />
