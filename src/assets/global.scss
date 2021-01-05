@@ -1,0 +1,85 @@
+@import './rem.scss';
+@import './mixins.scss';
+@import './keyframe.scss';
+$white:#fff;
+$grey9:#999;
+$greyc:#ccc;
+$grey6:#666;
+$grey7:#777;
+$grey74:#747474;
+$grey8:#888;
+$grey3:#333;
+$grey4:#444;
+$grey0:#000;
+$greyd:#ddd;
+$greyf2:#f2f2f2;
+$greyf0:#f0f0f0;
+$greyf8:#f8f8f8;
+$greyf4:#f4f4f4;
+$greyf6:#f6f6f6;
+$grey62:#626b7b;
+$grey86:#868e9c;
+$blue:#3e83f4;
+$img:#F5F7FA;
+$red:red;
+$black:#000;
+$hei:#333;
+$z:#9c8c74;
+$filter:#1d2a38;
+.globalTitle{
+  font-size: px(16);
+  margin-bottom: px(20);
+  color:$grey3;
+  /** font-family: 'ZCOOL XiaoWei', serif;*/
+}
+.moveTop{
+  transform: translateY(0);
+  opacity: 1;
+  transition: all .2s linear;
+}
+.Component{
+  opacity: 0;
+  transform: translateY(10%);
+}
+.globalModList{
+  padding: px(52) px(12) px(42) px(12);
+  ul{
+    overflow:hidden;
+    margin-bottom:px(10);
+    padding-bottom:px(10);
+    border-bottom: px(1) solid $greyf8;
+    .img{
+      float: left;
+      margin-right: px(12);
+      width: px(58);
+      height: px(77);
+      background: $img;
+    }
+    .imgList{
+      overflow: hidden;
+      h3{
+        font-size: px(14.5);
+        margin-bottom:px(5);
+        margin-top: px(2);
+      }
+      p{
+        font-size: px(13);
+        line-height: px(20);
+        max-height: px(40);
+        overflow: hidden;
+        color:$grey74;
+        font-weight: lighter;
+        span{
+          font-size:px(13);
+          color:$grey9;
+          font-weight: lighter;
+        }
+        b{
+          padding:0 px(5);
+          color:$grey9;
+          font-weight: lighter;
+        }
+      }
+    }
+  }
+}

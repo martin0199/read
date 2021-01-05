@@ -1,0 +1,29 @@
+@-webkit-keyframes bouncedelay{
+  0%,80%,100%{-webkit-transform:scale(0)}
+  40%{-webkit-transform:scale(1)}
+}
+@keyframes bouncedelay{
+  0%,80%,100%{-webkit-transform:scale(0);transform:scale(0)}
+  40%{transform:scale(1);-webkit-transform:scale(1)}
+}
+
+@mixin scroll {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+}
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin mod {
+  background: $hei;
+  color:$grey9;
+}
