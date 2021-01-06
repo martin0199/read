@@ -29,10 +29,11 @@ export default defineComponent({
     const error = computed(() => store.getters.error)
     const reload = () => {
       store.commit('setReadIndex')
+      store.commit('setReadError', '')
       store.dispatch('actionRead', 1)
     }
     const reloadsite = () => {
-      store.commit('setError', '')
+      store.commit('setReadError', '')
       store.commit('setReadSubMenu', false)
       store.commit('setReadMenu', true)
       store.commit('setReadLy', true)

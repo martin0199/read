@@ -92,7 +92,6 @@ export default defineComponent({
             store.commit('setReadCid', data.value.nextid),
             lsdata.value ? (
               right(),
-              watcher(),
               store.commit('setGlobalLoading', false)
             ) : (
               store.commit('setGlobalLoading', true),
