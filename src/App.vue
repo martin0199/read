@@ -1,5 +1,4 @@
 <template>
-{{appError}}
   <div class="appbox" :class="transitionName">
     <router-view v-slot="{ Component }" class="wrapper">
       <transition :name="transitionName">
@@ -8,7 +7,6 @@
     </router-view>
   </div>
   <app-error v-if="appError" />
-
 </template>
 <script>
 import appError from '@/components/global/error.vue'

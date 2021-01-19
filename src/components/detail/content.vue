@@ -11,19 +11,14 @@
       <p class="type">{{data.sortid}}</p>
     </div>
     <div class="intro">{{data.intro}}</div>
-    <add-bookcase />
   </div>
 </template>
 
 <script>
-import addBookcase from '@/components/detail/addBookCase.vue'
 import { useStore } from 'vuex'
 import { computed, defineComponent } from 'vue'
 export default defineComponent({
-  name: 'detail',
-  components: {
-    addBookcase
-  },
+  name: 'detailContent',
   setup () {
     const store = useStore()
     const data = computed(() => { return store.getters.detailData })
@@ -39,6 +34,8 @@ export default defineComponent({
   box-sizing: border-box;
   position: relative;
   height: 100%;
+  @include scroll;
+  padding-bottom: px(60);
   .mainImg{
     margin-top: px(50);
     overflow: hidden;

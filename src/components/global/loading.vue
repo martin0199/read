@@ -22,10 +22,10 @@
       <img src="/book/images/indicator_verybig.gif">
     </div>
   </div>
-  <div id="zhanWei">
-    <div class="zhanWeiList" v-if="loadType=='list'">
+  <div id="zhanWei"  v-if="loadType=='list'">
+    <div class="zhanWeiList">
       <div class="r">
-        <ul v-for="(item, index) in arr" :key="index">
+        <ul v-for="(item, index) in [1,2,3,4,5,6,7,8]" :key="index">
           <li class="img"></li>
           <li class="imgList">
             <p class="once"></p>
@@ -36,7 +36,7 @@
         </ul>
       </div>
       <div class="l">
-        <span v-for="(item, index) in arr" :key="index"></span>
+        <span v-for="(item, index) in [1,2,3,4]" :key="index"></span>
       </div>
     </div>
   </div>
@@ -157,7 +157,7 @@ export default defineComponent({
   }
 }
 .mod #readLoad{
-  @include mod
+  @include mod;
   .loading{
     @include mod
   }

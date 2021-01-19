@@ -1,7 +1,7 @@
 <template>
   <div id="ku">
     <global-header title="书城"></global-header>
-    <global-load v-if="globalLoading" loadType="load"></global-load>
+    <global-load v-if="globalLoading" loadType="loading"></global-load>
     <div :class="globalLoading?'Component':''" class="kuBox moveTop">
       <ku-right></ku-right>
       <ku-left></ku-left>

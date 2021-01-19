@@ -140,11 +140,11 @@ export default defineComponent({
     */
     //获取初始触摸位置
     const touchStart = (e) => {
+      //e.preventDefault()
       e.touches.length === 1 && (arag.x = e.touches[0].pageX, arag.y = e.touches[0].pageY)
     }
     //获取移动状态触摸位置
     const touchMove = (e) => {
-      e.preventDefault()
       arag.mx = e.touches[0].pageX - arag.x
       arag.my = e.touches[0].pageY - arag.y
       arag.touch = true

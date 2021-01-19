@@ -7,19 +7,21 @@
 
 <script>
 import globalHeader from '@/components/global/header.vue'
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 export default defineComponent({
   components: {
     globalHeader
   },
   setup () {
     const router = useRouter()
-    const handleError = () => {
-      router.go(0)
-    }
+    const store = useStore()
+    const error = computed(() => store.getters.error)
+    const handleError = () => { error.value ? alert(error.value) : router.go() }
     return {
-      handleError
+      handleError,
+      error
     }
   }
 })

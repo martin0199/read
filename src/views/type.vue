@@ -33,10 +33,10 @@ export default defineComponent({
   setup () {
     const store = useStore()
     const route = useRoute()
-    const router = useRouter()
     const globalLoading = computed(() => { return store.getters.globalLoading })
     const page = computed(() => { return store.getters.typePage })
     const typeid = computed(() => { return store.getters.typeId })
+    const initTypeId = typeid.value ? typeid.value : route.params.id
     const init = (index, page) => {
       store.commit('setTypeId', index)
       store.commit('setTypePage', page)
@@ -53,15 +53,12 @@ export default defineComponent({
         }
       })
     }
-    const typeLink = (index) => {
-      router.push('/type/' + index)
-      init(index, 1)
-    }
-    const changTypePage = (page) => { init(typeid.value, page) }
+    const typeLink = (index) => { init(index, 1) } //导航获取
+    const changTypePage = (page) => { init(typeid.value, page) } //页码获取
     watch(route, (e) => {
-      e.name === 'ku' && store.commit('setTypePage', 1)
+      e.name === 'ku' && (store.commit('setTypePage', 1), store.commit('setTypeId', '')) //设置路径
     })
-    init(route.params.id, page.value)
+    init(initTypeId, page.value) //初始化
     return {
       globalLoading,
       changTypePage,

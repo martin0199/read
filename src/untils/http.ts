@@ -27,7 +27,7 @@ axiosInstance.interceptors.response.use(
     setTimeout(() => {
       store.commit('removeHttpList', error.config.url)
     }, 200)
-    store.commit('setError', error.message)
+    error.config.url !== '/http/book/read.php' && store.commit('setError', error.message)
     return Promise.reject(error.response)
   }
 )

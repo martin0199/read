@@ -3,12 +3,14 @@
     <global-header :back="true" :border="true"></global-header>
     <global-load v-if="globalLoading" loadType="loading"/>
     <detail-content />
+    <add-bookcase />
   </div>
 </template>
 <script>
 import globalHeader from '@/components/global/header.vue'
 import detailContent from '@/components/detail/content.vue'
 import globalLoad from '@/components/global/loading.vue'
+import addBookcase from '@/components/detail/addBookCase.vue'
 import { useStore } from 'vuex'
 import { computed, defineComponent } from 'vue'
 import { useRoute } from 'vue-router'
@@ -17,7 +19,8 @@ export default defineComponent({
   components: {
     globalHeader,
     detailContent,
-    globalLoad
+    globalLoad,
+    addBookcase
   },
   setup () {
     const route = useRoute()
@@ -27,9 +30,6 @@ export default defineComponent({
     store.commit('setDetailId', articleid.value)
     store.commit('setDetail', '')
     store.dispatch('actionDetail')
-    /*watch(route, (e) => {
-      e.name === 'read' && store.commit('setDetailHref', 1)
-    })*/
     return {
       globalLoading
     }

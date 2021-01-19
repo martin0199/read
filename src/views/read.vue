@@ -84,6 +84,7 @@ export default defineComponent({
   overflow: hidden;
   background: url(/book/read/skin-default-t.ece62.jpg) no-repeat top,url(/book/read/skin-default-b.79f06.jpg) no-repeat bottom,url(/book/read/skin-default-m.35905.jpg) repeat-y center 119px;
   background-size: 100%;
+  touch-action: none;
   &.mod{
     @include mod
   }

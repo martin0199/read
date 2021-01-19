@@ -1,7 +1,7 @@
 <template>
   <div id="jingxuan">
     <jx-header />
-    <global-load v-if="globalLoading" loadType="load" />
+    <global-load v-if="globalLoading" loadType="loading" />
     <jx-content :class="globalLoading?'Component':''" class="moveTop" />
     <global-footer/>
   </div>
